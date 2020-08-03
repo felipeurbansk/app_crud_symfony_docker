@@ -1,0 +1,20 @@
+php:
+    container_name: php-symfony
+    build: .
+    ports: 
+        - "80:80"
+    volumes: 
+        - ./app:/var/www/html
+    links: 
+        - mariadb
+    
+mariadb:
+    container_name: mariadb-symfony
+    image: mariadb
+    restart: always
+    ports: 
+        - "3307:3306"
+    environment: 
+        - MYSQL_DATABASE=crud_symfony
+        - MYSQL_ROOT_PASSWORD=google123
+    
